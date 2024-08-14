@@ -7,9 +7,19 @@ const [email , setEmail] = useState("")
 const [password,setPassword] = useState("")
 const [confirmpassword , setConfirmPassword] = useState("")
 const handleSignup = async (event)=>{
-   
-event.preventDefault()
+   event.preventDefault();
 console.log(email , password , confirmpassword)
+
+try{
+
+  const result = await fetch('')
+
+}catch(error){
+
+
+}
+
+
 
 } 
 
@@ -22,10 +32,9 @@ return (
 <div className='w-[50%] mt-10 mx-auto rounded-lg bg-gray-300 box-shadow:0 1px 3px 0 rgb(0 0 0 / 0.1) shadow-lg' >
 <h1 className='text-3xl font-bold text-gray-700 text-center' >SignUp</h1>
 
-      <form onSubmit={handleSignup}
-      className='flex flex-col justify-center items-center m-1 p-1 mt-10'>
-      
-        
+<form onSubmit={handleSignup}
+className='flex flex-col justify-center items-center m-1 p-1 mt-10'>
+
 <input onChange={(e)=> setEmail(e.target.value) }  className='border border-gray-300 w-[50%] rounded-xl capitalize px-3 py-3 '
 type='email'
 placeholder='Email'
