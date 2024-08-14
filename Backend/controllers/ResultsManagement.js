@@ -39,6 +39,43 @@ const { TestResult } = require('../models/mdata'); // Assuming you have a Mongoo
         }
       };
       
+// add this api in aug 14 3;40 
+
+exports.results = async (req, res) => {
+    const { testId, candidateId, score, answers, feedback } = req.body;
+
+    try {
+        // Check if the test result already exists
+        const existingResult = await TestResult.findOne({ testId, candidateId });
+
+        if (existingResult) {
+            return res.status(400).json({
+                success: false,
+                message: "You have already submitted the test results and feedback for this test.",
+            });
+        }
+
+        // Create a new test result
+        const newResult = new TestResult({ testId, candidateId, score, answers, feedback });
+        await newResult.save(); // Save the result to the database
+
+        res.status(201).json({
+            success: true,
+            message: "Your test results and feedback have been submitted successfully.",
+            data: {
+                responseId: newResult._id,
+                score: newResult.score,
+                feedback: newResult.feedback,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "An error occurred while processing your request: " + error.message,
+        });
+    }
+};
+
 
 // Retrieve all test results for a specific candidate
 // router.get('/results/candidate/:candidateId', async (req, res) => {
