@@ -4,13 +4,13 @@ import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = async (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
 
     try {
-      const result = await fetch('http://localhost:3002/api/v1/login',{
+      const result = await fetch('http://localhost:3002/api/v1/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,9 +22,9 @@ const Login = () => {
 
       if (result.ok) {
         console.log('Login successful');
-        navigate('/signUp'); // Navigate to signup page upon successful login
+        navigate('/TestInterface'); // Navigate to the correct route after login
       } else {
-        console.error('Login failed:', resultData.message);
+        console.error('Login failed:', resultData.msg);
       }
     } catch (error) {
       console.error('Error:', error.message);
@@ -54,7 +54,7 @@ const Login = () => {
         <form className='flex flex-col justify-center items-center m-1 p-1 mt-10' onSubmit={handleLogin}>
           <br />
           <input
-            className='border border-gray-300 w-[50%] rounded-xl capitalize px-3 py-3'
+            className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3'
             onChange={(e) => setEmail(e.target.value)}
             value={email}
             type='email'
@@ -63,7 +63,7 @@ const Login = () => {
           />
           <br />
           <input
-            className='border border-gray-300 w-[50%] rounded-xl capitalize px-3 py-3'
+            className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3'
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             type='password'
