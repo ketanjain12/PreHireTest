@@ -1,0 +1,53 @@
+# Ignore node_modules in both Backend and Frontend directories
+/Backend/node_modules/
+/Frontend/node_modules/
+
+# Ignore log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore build directories
+/Backend/dist/
+/Frontend/dist/
+/Backend/build/
+/Frontend/build/
+
+# Ignore environment files
+.env
+/Backend/.env.local
+/Backend/.env.development
+/Backend/.env.production
+/Backend/.env.staging
+/Frontend/.env.local
+/Frontend/.env.development
+/Frontend/.env.production
+/Frontend/.env.staging
+
+# Ignore any temporary files
+*.tmp
+*.swp
+
+# Ignore .idea (for JetBrains IDEs)
+.idea/
+
+# Ignore coverage directory for test coverage reports
+/Backend/coverage/
+/Frontend/coverage/
+
+# Ignore specific IDE/project files
+.vscode/
+*.code-workspace
+
+# Build output
+/Frontend/.next/
+/Frontend/out/
+
+# Caches
+/Frontend/.next/cache/
+
