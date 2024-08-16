@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 const SignUp = () => {
 
@@ -12,7 +12,30 @@ console.log(email , password , confirmpassword)
 
 try{
 
-  const result = await fetch('')
+  const result = await fetch('http://localhost:3002/api/v1/signup',{
+    method: 'POST',
+    headers:{
+      'Content-Type':'application/json',
+    },
+    body:JSON.stringify({email,password}),
+
+  });
+
+  const resultData = await result.json();
+
+  if(result.ok){
+
+    Navigate('/login')
+
+  }
+
+  else{
+
+    console.error(resultData.msg || 'Signup failed');
+
+  }
+
+
 
 }catch(error){
 
