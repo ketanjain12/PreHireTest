@@ -7,6 +7,7 @@ import Login from "./Component/Login";
 import TestInterFace from "./Component/TestInterFace";
 import Quiz from "./Component/Quiz"
 import axios from "axios";
+import CreateTest from "./Component/CreateTest";
 
 const App = () => {
 
@@ -50,8 +51,9 @@ setQuestions(data.results)
        } ></Route>
 
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>  
 
+  
       
         
     </>
