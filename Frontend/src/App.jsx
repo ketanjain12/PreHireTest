@@ -17,7 +17,7 @@ const [score , setScore] = useState(0);
 const fetchQuestions = async(selectedRole = "", dificulty = "")=>{
 
 try{
-const res = await axios.get('https://opentdb.com/api.php?amount=10&type=multiple') 
+const res = await axios.get('http://localhost:3002/api/v1/createtests') 
 const data = res.data 
 console.log(data)
 setQuestions(data.results)
@@ -52,6 +52,7 @@ setQuestions(data.results)
         </Routes>
       </BrowserRouter>
 
+      
         
     </>
   );
