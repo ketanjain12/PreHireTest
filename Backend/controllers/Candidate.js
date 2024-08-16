@@ -7,7 +7,7 @@ exports.registerCandidate = async (req, res) => {
         const { name, email, testIds } = req.body;
         console.log("name is ",name,"email is ",email,"testids is ",testIds);
 
-        // Check if candidate already exists
+        //yaha check karennge kki candidate h kya nhi h emaial ke according 
         let candidate = await Candidate.findOne({ email });
         console.log("candidate is ",candidate);
 
@@ -19,9 +19,9 @@ exports.registerCandidate = async (req, res) => {
                 });
         }
 
-        // Fetch tests by IDs
+     // yaha per test data fetch karge
         const tests = await Test.find({ _id: { $in: testIds } });
-
+    console.log("tests data is = ",tests)
         // Create new candidate and assign tests
         candidate = new Candidate({
             name,
@@ -86,8 +86,11 @@ exports.trackProgress = async (req, res) => {
         const candidateId = req.params.candidateId.trim();
 
         // Validate candidateId
+        
         if (!mongoose.Types.ObjectId.isValid(candidateId)) {
+
             console.error(`Invalid candidateId: ${candidateId}`);
+
             return res.status(400).json({
                  status: false,
                   msg: "Invalid candidateId"
@@ -102,6 +105,7 @@ exports.trackProgress = async (req, res) => {
 
         if (!candidate) {
             console.error(`Candidate with ID ${candidateId} not found`);
+
             return res.status(404).json({ 
                 status: false, 
                 msg: "Candidate not found" 
