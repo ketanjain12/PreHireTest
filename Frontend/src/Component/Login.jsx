@@ -33,12 +33,12 @@ const Login = () => {
 
   return (
     <>
-      <div className='flex items-center justify-center mt-10 py-1'>
+      <div className='flex items-center justify-center mt-10  py-1'>
         <Link
           className="border-gray-400 rounded-lg text-black bg-white py-2 px-7 hover:bg-gradient-to-r from-indigo-500 via-purple-500 hover:text-white to-pink-500"
-          to="/login"
+          to="/login" 
         >
-          Login
+          Login 
         </Link>
 
         <Link
@@ -56,7 +56,7 @@ const Login = () => {
           <input
             className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3'
             onChange={(e) => setEmail(e.target.value)}
-            value={email}
+            value={email}  
             type='email'
             placeholder='Email'
             id='Email'
