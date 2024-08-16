@@ -199,5 +199,41 @@ exports.updateprofile = async (req, res) => {
     }
 };
 
+exports.resetpassword = async (req, res) => {
+
+    const {  email,newpassword } = req.body;
+
+    if (!email || !newpassword) {
+        return res.status(400).json({
+            status: false,
+            msg: "Please provide both email and newpassword "
+        });
+    }
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({
+                status:false,
+                 message: "User not found"
+                 });
+        }
+        const hashpassword = await bcrypt.hash(newpassword,10)
+        user.password = hashpassword ;
+  
+        await user.save();
+
+    res.status(200).json({
+        status:true,
+        msg:"password changes successfully"
+    })
+        
+    } catch (error) {
+        console.error(error); 
+        res.status(500).json({ 
+            status:false,
+            message: "error in updating new password" 
+        });
+    }
+};
 
 
