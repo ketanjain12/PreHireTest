@@ -55,7 +55,8 @@ const QuestionSchema = new Schema({
   },
   type: {
       type: String,
-      enum: ['MCQ', 'Coding'], // 3 options h                                         
+      // enum: ['MCQ', 'Coding'], // 3 options h 
+      enum: ['Aptiitude', 'Coding'],
       required: true
   }
 });
