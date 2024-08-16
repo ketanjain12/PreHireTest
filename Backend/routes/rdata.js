@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const validateUser=require('../helper/validation')
-const {signup,login}=require('../controllers/c.data')
+const {signup,login,updateprofile}=require('../controllers/c.data')
 const{createtests,readtests,gettestsById,updatetestsById,deletetestsById,getalltestsByIddetails,specifictestsById
 }=require('../controllers/testmanagement')
 const{registerCandidate,trackProgress}=require('../controllers/Candidate')
@@ -16,6 +16,7 @@ const{results,candidateId,testId,resultId}=require('../controllers/ResultsManage
 // router.post("/imageReducerUpload" ,validateUser, imageReducerUpload);
 router.post("/signup" , signup);
 router.post("/login" , login);
+router.post("/updateprofile" , updateprofile);
 router.post("/createtests",createtests)
 router.post("/readtests",readtests) 
 router.post("/gettestsById/:Id", gettestsById);

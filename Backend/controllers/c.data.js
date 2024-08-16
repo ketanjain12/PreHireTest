@@ -157,3 +157,47 @@ exports.login = async (req, res) => {
 };
 
 // this is a new login api endpoints url
+
+// update profile for existing api 
+exports.updateprofile = async (req, res) => {
+    const { name, email } = req.body;
+
+
+    if (!name || !email) {
+        return res.status(400).json({
+            status: false,
+            msg: "Please provide both name and email"
+        });
+    }
+
+    try {
+     
+        const user = await User.findOne({ email });
+
+        if (!user) {
+            return res.status(404).json({
+                status:false,
+                 message: "User not found"
+                 });
+        }
+
+        user.name = name ;
+      
+        user.email = email;
+
+    
+        await user.save();
+
+        res.status(200).json(user);
+        
+    } catch (error) {
+        console.error(error); 
+        res.status(500).json({ 
+            status:false,
+            message: "error in uploading user profile" 
+        });
+    }
+};
+
+
+
