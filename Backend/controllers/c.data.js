@@ -57,11 +57,63 @@ exports.signup = async (req, res) => {
         });
     }
 };
+// exports.login = async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+
+//         // Check if email and password are provided
+//         if (!email || !password) {
+//             return res.status(400).json({
+//                 status: false,
+//                 msg: "Please fill in both email and password for login"
+//             });
+//         }
+
+//         // Find the user by email
+//         const user = await User.findOne({ email });
+
+//         // Check if user exists
+//         if (!user) {
+//             return res.status(404).json({
+//                 status: false,
+//                 msg: "User not found. Please sign up first."
+//             });
+//         }
+
+//         // Compare the provided password with the stored hashed password
+//         const isMatch = await bcrypt.compare(password, user.password);
+//         if (!isMatch) {
+//             return res.status(401).json({
+//                 status: false,
+//                 msg: "Invalid credentials. Please try again."
+//             });
+//         }
+
+//         // Generate JWT token using the generateToken function
+//         const token = generateToken(user._id);
+
+//         // Send response with token and user data
+//         return res.status(200).json({
+//             status: true,
+//             msg: "Login successful",
+//             data: user,
+//             token // Include token in the response
+//         });
+
+//     } catch (error) {
+//         console.error("Login Error:", error);
+//         return res.status(500).json({
+//             status: false,
+//             msg: "Internal server error: " + error.message
+//         });
+//     }
+// };
+
+// new file aug 14 5.02 
 exports.login = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Check if email and password are provided
         if (!email || !password) {
             return res.status(400).json({
                 status: false,
@@ -69,10 +121,8 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Find the user by email
         const user = await User.findOne({ email });
 
-        // Check if user exists
         if (!user) {
             return res.status(404).json({
                 status: false,
@@ -80,7 +130,6 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Compare the provided password with the stored hashed password
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             return res.status(401).json({
@@ -89,15 +138,13 @@ exports.login = async (req, res) => {
             });
         }
 
-        // Generate JWT token using the generateToken function
         const token = generateToken(user._id);
 
-        // Send response with token and user data
         return res.status(200).json({
             status: true,
             msg: "Login successful",
             data: user,
-            token // Include token in the response
+            token
         });
 
     } catch (error) {
@@ -109,5 +156,4 @@ exports.login = async (req, res) => {
     }
 };
 
-
-
+// this is a new login api endpoints url
