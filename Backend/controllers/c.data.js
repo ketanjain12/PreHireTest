@@ -198,7 +198,7 @@ exports.updateprofile = async (req, res) => {
         });
     }
 };
-
+// resetpassword
 exports.resetpassword = async (req, res) => {
 
     const {  email,newpassword } = req.body;
@@ -235,5 +235,3 @@ exports.resetpassword = async (req, res) => {
         });
     }
 };
-
-

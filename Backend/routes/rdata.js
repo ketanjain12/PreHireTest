@@ -13,7 +13,6 @@ const{submittest,testResult}=require('../controllers/testtaking')
 
 const{results,candidateId,testId,resultId}=require('../controllers/ResultsManagement')
 
-
 // c. data controller routes here there are 4 router post server
 router.post("/signup" , signup);
 router.post("/login" , login);
@@ -38,6 +37,5 @@ router.post("/results/:resultId",resultId) ;
 // testtaking controller routes
 router.post("/submittest",submittest)
 router.post("/testResult",testResult) 
-
 
 module.exports=router;  // exports router
