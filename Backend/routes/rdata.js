@@ -14,7 +14,7 @@ const{submittest,testResult}=require('../controllers/testtaking')
 const{results,candidateId,testId,resultId}=require('../controllers/ResultsManagement')
 
 
-// c. data controller routes
+// c. data controller routes here there are 4 router post server
 router.post("/signup" , signup);
 router.post("/login" , login);
 router.post("/updateprofile" , updateprofile);
