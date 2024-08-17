@@ -72,7 +72,7 @@ exports.submittest = async (req, res) => {
   }
 };
 
-module.exports = router;
+
 // 2. Get Test Result
 // This endpoint retrieves the test result for a candidate.
 
@@ -100,7 +100,7 @@ exports.testResult = async (req, res) => {
   }
 };
 
-module.exports = router;
+
 //   List Candidate's Tests
 //   This endpoint lists all the tests a candidate has taken along with their scores.
 
@@ -163,7 +163,7 @@ exports.submitFeedback = async (req, res) => {
   }
 };
 
-module.exports = router;
+
 //   Get All Tests
 // This endpoint retrieves all tests for display (e.g., for an admin or candidate to select).
 

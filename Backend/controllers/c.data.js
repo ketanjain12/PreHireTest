@@ -120,7 +120,7 @@ exports.login = async (req, res) => {
                 msg: "Please fill in both email and password for login"
             });
         }
-
+      
         const user = await User.findOne({ email });
 
         if (!user) {

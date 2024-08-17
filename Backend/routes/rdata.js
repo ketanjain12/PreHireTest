@@ -13,6 +13,13 @@ const{submittest,testResult}=require('../controllers/testtaking')
 
 const{results,candidateId,testId,resultId}=require('../controllers/ResultsManagement')
 
+// Log the imported functions to check if they are defined(// All should be functions)
+console.log(signup, login, updateprofile, resetpassword); 
+console.log(createtests, readtests, gettestsById); 
+console.log(registerCandidate, trackProgress); 
+console.log(submittest, testResult); 
+console.log(results, candidateId, testId, resultId); 
+
 // c. data controller routes here there are 4 router post server
 router.post("/signup" , signup);
 router.post("/login" , login);
