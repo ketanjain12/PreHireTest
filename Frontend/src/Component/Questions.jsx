@@ -5,14 +5,14 @@ const Questions = ({
   cureQues,
   setCureQues,
   score,
-  questions = [], // Ensure questions is an array by default
+  questions = [],  //Ensure questions is an array by default 
   correct,
   options,
   setScore,
   setQuestions,
 }) => {
   const [selected, setSelected] = useState();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(false);  
 
   // Check if questions are available and current question is valid
   //   if (!questions.length || !questions[cureQues]) {

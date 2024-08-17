@@ -7,6 +7,7 @@ import Login from "./Component/Login";
 import TestInterFace from "./Component/TestInterFace";
 import Quiz from "./Component/Quiz"
 import axios from "axios";
+import Questions from "./Component/Questions";
 
 const App = () => {
 
@@ -23,7 +24,7 @@ console.log(data)
 setQuestions(data.results)
 
 }catch(error){
-  console.log("error in fetching data" , error.message)
+  console.log("error in fetching data" , error.message)        
 }
  
       
@@ -31,7 +32,7 @@ setQuestions(data.results)
 
   return (
     <>
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <NavBar></NavBar>
         <Routes>
            <Route path="/" element={<Home/>} />
@@ -50,7 +51,9 @@ setQuestions(data.results)
        } ></Route>
 
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+
+      <Quiz></Quiz>
 
      
 

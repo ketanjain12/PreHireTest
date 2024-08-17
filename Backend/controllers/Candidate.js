@@ -7,7 +7,8 @@ const {TestResult} = require('../models/mdata');
 //         const { name, email, testIds } = req.body;
 //         console.log("name is ",name,"email is ",email,"testids is ",testIds);
 
-//         //yaha check karennge kki candidate h kya nhi h emaial ke according 
+//         
+//checking candidates according to email if candiate is resestered then navigate to test page
 //         let candidate = await Candidate.findOne({ email });
 //         console.log("candidate is ",candidate);
 
@@ -55,8 +56,8 @@ exports.registerCandidate = async (req, res) => {
         let candidate = await Candidate.findOne({ email });
         console.log("candidate is", candidate);
 
-        if (candidate) {
-            return res.status(400).json({ 
+        if (candidate) { 
+            return res.status(400).json({        
                 status: false,
                 msg: "Candidate already exists",
                 data: candidate
