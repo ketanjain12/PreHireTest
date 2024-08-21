@@ -2,6 +2,53 @@ const {Candidate} = require('../models/mdata');
 const {Test} = require('../models/mdata');
 const {TestResult} = require('../models/mdata');
 
+
+// exports.registerCandidate = async (req, res) => {
+//     try {
+//         const { name, email, testIds } = req.body;
+//         console.log("name is ",name,"email is ",email,"testids is ",testIds);
+
+//         
+//checking candidates according to email if candiate is resestered then navigate to test page
+//         let candidate = await Candidate.findOne({ email });
+//         console.log("candidate is ",candidate);
+
+//         if (candidate) {
+//             return res.status(400).json({ 
+//                 status: false,
+//                  msg: "Candidate already exists" ,
+//                  data:candidate
+//                 });
+//         }
+
+//      // yaha per test data fetch karge
+//         const tests = await Test.find({ _id: { $in: testIds } });
+//     console.log("tests data is = ",tests)
+//         // Create new candidate and assign tests
+//         candidate = new Candidate({
+//             name,
+//             email,
+//             testsTaken: tests.map(test => ({
+//                 testId: test._id,
+//                 score: null,
+//                 completed: false
+//             }))
+//         });
+
+//         await candidate.save();
+
+//         res.status(201).json({ 
+//             status: true, 
+//             msg: "Candidate registered successfully",
+//              data: candidate });
+//     } catch (error) {
+//         res.status(500).json({ 
+//             status: false, 
+//             msg: "Server error: " + error.message });
+//     }
+// };
+
+
 exports.registerCandidate = async (req, res) => {
     try {
         const { name, email, testIds } = req.body;
@@ -11,8 +58,8 @@ exports.registerCandidate = async (req, res) => {
         let candidate = await Candidate.findOne({ email });
         console.log("candidate is ",candidate);
 
-        if (candidate) {
-            return res.status(400).json({ 
+        if (candidate) { 
+            return res.status(400).json({        
                 status: false,
                  msg: "Candidate already exists" ,
                  data:candidate
