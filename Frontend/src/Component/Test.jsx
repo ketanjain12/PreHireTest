@@ -1,8 +1,8 @@
 
 import React, { useEffect, useState } from "react";
 
-import React, { useState } from "react"; 
 import { Data } from "../assets/Data";
+
 const Test = () => {
   const [index, setIndex] = useState(0);
   const [question, setQuestion] = useState(Data[index]);
@@ -129,7 +129,7 @@ return ()=> clearInterval(timer);
               <h3 className=" mr-56 text-center font-semibold ">
 
               <h3 className="ml-16 font-semibold ">
- 5c68eb88258854fecf794578c0450bb1e2cd8f2a
+ 
                 {index + 1} Of {Data.length}
               </h3>
             </>
