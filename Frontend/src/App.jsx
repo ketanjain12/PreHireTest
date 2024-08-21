@@ -4,8 +4,6 @@ import NavBar from "./Component/NavBar";
 import Home from "./Component/Home";
 import SignUp from "./Component/SignUp";
 import Login from "./Component/Login";
-import TestInterFace from "./Component/TestInterFace";
-import Quiz from "./Component/Quiz"
 import axios from "axios";
 import Test from "./Component/Test";
 
@@ -42,8 +40,6 @@ setQuestions(data.results)
          <Route path="/test" element={<Test></Test>}></Route>
         </Routes>
       </BrowserRouter>  
-
- 
         
     </>
   );
