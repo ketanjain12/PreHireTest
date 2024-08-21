@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const validateUser=require('../helper/validation')
+const protect = require('../middleware/auth');
 
-const {signup,login,updateprofile,resetpassword}=require('../controllers/c.data')
+const {signup,login,updateprofile,resetpassword,getUserProfile,forgetpassword}=require('../controllers/c.data')
 
 const{createtests,readtests,gettestsById,updatetestsById,deletetestsById,getalltestsByIddetails,specifictestsById
 }=require('../controllers/testmanagement')
 
 const{registerCandidate,trackProgress}=require('../controllers/Candidate')
 
-const{submittest,testResult}=require('../controllers/testtaking')
+const{submittest,submittest1,testResult}=require('../controllers/testtaking')
 
 const{results,candidateId,testId,resultId}=require('../controllers/ResultsManagement')
 
@@ -25,6 +26,8 @@ router.post("/signup" , signup);
 router.post("/login" , login);
 router.post("/updateprofile" , updateprofile);
 router.post("/resetpassword" , resetpassword);
+router.get('/profile', protect, getUserProfile);
+router.post("/forgetpassword" , forgetpassword);
 
 //testmanagement js
 router.post("/createtests",createtests)
@@ -44,5 +47,6 @@ router.post("/results/:resultId",resultId) ;
 // testtaking controller routes
 router.post("/submittest",submittest)
 router.post("/testResult",testResult) 
+router.post("/submittest1",submittest1)
 
 module.exports=router;  // exports router

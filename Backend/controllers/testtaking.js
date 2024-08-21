@@ -71,6 +71,94 @@ exports.submittest = async (req, res) => {
     });
   }
 };
+//{
+//   "question": "What is the capital of France?",
+//   "options": ["Paris", "London", "Berlin", "Madrid"],
+//   "correctAnswer": "Paris"
+// } acc to this question schema
+
+exports.submittest1 = async (req, res) => {
+  try {
+    const { candidateId, testId, answers } = req.body;
+
+    // Find the test for the user
+    const test = await Test.findOne({ testId });
+    if (!test) {
+      return res.status(404).json({
+        msg: false,
+        message: "Test not found",
+      });
+    }
+
+    let score = 0;
+
+    // Calculate score
+    answers.forEach((answer) => {
+      const question = test.questions.find(
+        (q) => q.question === answer.question
+      );
+      if (question && question.correctAnswer === answer.selectedOption) {
+        score += 1;
+      }
+    });
+
+    // Save the test result
+    const resultId = new mongoose.Types.ObjectId().toString();
+    const testResult = new TestResult({
+      resultId,
+      testId,
+      candidateId,
+      score,
+      answers,
+    });
+
+    await testResult.save();
+
+    // Update the candidate's test history
+    await Candidate.updateOne(
+      { candidateId },
+      {
+        $push: {
+          testsTaken: {
+            testId: test._id,
+            resultId: resultId,
+            score: score,
+          },
+        },
+      },
+      { upsert: true }
+    );
+
+    res.status(200).json({
+      status: true,
+      message: "Test submitted successfully",
+      score,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      status: false,
+      message: "Server Error",
+    });
+  }
+};
+// example request body
+// {
+//   "candidateId": "candidate123",
+//   "testId": "test123",
+//   "answers": [
+//     {
+//       "question": "What is the capital of France?",
+//       "selectedOption": "Paris"
+//     },
+//     {
+//       "question": "What is the capital of Germany?",
+//       "selectedOption": "Berlin"
+//     }
+//   ]
+// }
+
+
 
 
 // 2. Get Test Result
