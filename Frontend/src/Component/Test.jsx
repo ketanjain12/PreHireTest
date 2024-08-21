@@ -1,4 +1,7 @@
+
 import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react"; 
 import { Data } from "../assets/Data";
 const Test = () => {
   const [index, setIndex] = useState(0);
@@ -7,6 +10,7 @@ const Test = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
+ 
   const [sec ,setSec] = useState(0);
   const [min , setMin] = useState(0)
 
@@ -27,16 +31,25 @@ return ()=> clearInterval(timer);
 
   });
 
+
+
   const checkAnswer = (elem, option) => {
     if (!lock) {
       setSelectedOption(option);
       setLock(true);
+
       
       if (option === question.correctAnswer) {
         setScore((prev) => prev + 1);
       } else {
         elem.target.classList.add("Wrong");
       }
+
+      setScore((prev) => prev + 1);
+    } else {
+      elem.target.classList.add("Wrong");
+      setLock(true);
+
     }
   };
 
@@ -62,6 +75,7 @@ return ()=> clearInterval(timer);
     <>
       <div className="bg-gradient-to-r shadow-2xl  from-indigo-300 h-[100vh] realative via-blue-400">
         <div className="mx-auto absolute bg-white    top-[20%] w-[70%] h-[70%] m-auto flex flex-col gap-5 left-[20%]">
+
         <div className="flex items-center justify-between p-2 ">
         <h1 className="ml-16 text-xl font-bold mt-5">
             Digi-Prima Pre Hire Test
@@ -69,6 +83,10 @@ return ()=> clearInterval(timer);
           <h4 className="font-bold text-xl">Timer : {min<10?"0" +min:min}:{sec<10?"0"+sec:sec}</h4>
           
         </div>
+
+          <h1 className="ml-16 text-xl font-bold mt-5">
+            Digi-Prima Pre Hire Test
+          </h1>
           <hr />
 
           {result ? (
@@ -107,7 +125,11 @@ return ()=> clearInterval(timer);
                 Next
               </button>
 
+
               <h3 className=" mr-56 text-center font-semibold ">
+
+              <h3 className="ml-16 font-semibold ">
+ 5c68eb88258854fecf794578c0450bb1e2cd8f2a
                 {index + 1} Of {Data.length}
               </h3>
             </>

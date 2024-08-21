@@ -24,7 +24,7 @@ console.log(data)
 setQuestions(data.results)
 
 }catch(error){
-  console.log("error in fetching data" , error.message)        
+  console.log("error in fetching data" , error.message)
 }
  
       
@@ -32,7 +32,11 @@ setQuestions(data.results)
 
   return (
     <>
+
        <BrowserRouter>
+
+      <BrowserRouter>
+
         <NavBar></NavBar>
         <Routes>
            <Route path="/" element={<Home/>} />
@@ -52,10 +56,17 @@ setQuestions(data.results)
        <Route path="/test" element={<Test></Test>} ></Route>
 
         </Routes>
+ HEAD
  
       </BrowserRouter>  
 
     
+=======
+      </BrowserRouter>  
+
+ 
+        
+ 5c68eb88258854fecf794578c0450bb1e2cd8f2a
     </>
   );
 };
