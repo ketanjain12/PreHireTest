@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+  
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -18,7 +18,7 @@ const Login = () => {
         body: JSON.stringify({ email, password }), 
       });
 
-      const resultData = await result.json();       
+      const resultData = await result.json();    
 
       if (result.ok) {
         console.log('Login successful');
