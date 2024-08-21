@@ -6,7 +6,7 @@ const { generateToken } = require("../jwt/jwtToken"); // Import JWT generation u
 exports.signup = async (req, res) => {
   // const { userId, name, email, password, role } = req.body;
   const { name, email, password, role } = req.body; // add new data today aug 12
-  // Check if all required fields are provided
+
   if (!name || !email || !password || !role) {
     return res.status(400).json({
       status: false,
@@ -24,10 +24,8 @@ exports.signup = async (req, res) => {
       });
     }
 
-    // Hash password logic
     const passwordHash = await bcrypt.hash(password, 10);
 
-    // Create a new user entry
     const newUser = await User.create({
       // userId,
       name,
@@ -36,7 +34,6 @@ exports.signup = async (req, res) => {
       role,
     });
 
-    // Generate JWT token for the new user
     const token = generateToken(newUser._id);
 
     console.log("New User Created:", newUser);
@@ -45,7 +42,7 @@ exports.signup = async (req, res) => {
     return res.status(201).json({
       status: true,
       msg: "Successfully created user entry",
-      data: newUser,
+      data: newUser.email,
       token,
     });
   } catch (error) {
