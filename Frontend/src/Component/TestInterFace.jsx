@@ -138,13 +138,15 @@ const TestInterFace = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const payload = {
       name,
       email,
-      testIds,
+      testIds: testIds.map(id => id.trim()), // Trim whitespace
     };
-
+  
+    console.log("Submitting payload:", payload);
+  
     try {
       const response = await fetch('http://localhost:3002/api/v1/registerCandidate', {
         method: 'POST',
@@ -153,8 +155,8 @@ const TestInterFace = () => {
         },
         body: JSON.stringify(payload),
       });
-
-      const result = await response.json();
+  
+      const result = await response.json();//code change
       if (response.ok) {
         alert('Candidate registered successfully!');
       } else {
@@ -165,6 +167,7 @@ const TestInterFace = () => {
       alert('An error occurred while registering the candidate');
     }
   };
+  
 
   return (
     <div className="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
@@ -184,7 +187,7 @@ const TestInterFace = () => {
 
         <div>
           <label className="block text-lg font-medium text-gray-700">Email</label>
-          <input
+          <input     
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}

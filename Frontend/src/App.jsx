@@ -8,6 +8,7 @@ import TestInterFace from "./Component/TestInterFace";
 import Quiz from "./Component/Quiz"
 import axios from "axios";
 import CreateTest from "./Component/CreateTest";
+import Test from "./Component/Test";
 
 const App = () => {
 
@@ -49,12 +50,12 @@ setQuestions(data.results)
                 setName={setName}
                 fetchQuestions={fetchQuestions} ></TestInterFace> 
        } ></Route>
+       <Route path="/test" element={<Test></Test>} ></Route>
 
         </Routes>
       </BrowserRouter>  
 
-  
-      
+ 
         
     </>
   );

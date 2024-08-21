@@ -6,7 +6,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [confirmPassword, setConfirmPassword] = useState("");
-  const [role, setRole] = useState(""); // Assuming role is part of the signup form
+  //const [role, setRole] = useState(""); // removed from input field 
   const navigate = useNavigate();
 
   const handleSignup = async (event) => {
@@ -68,8 +68,8 @@ const SignUp = () => {
           {/* <input onChange={(e) => setConfirmPassword(e.target.value)} className='border border-gray-300 w-[50%] rounded-xl capitalize px-3 py-3' type='password' placeholder='Confirm Password' id='confirmPassword' value={confirmPassword} />
           <br /> */}
 
-          <input onChange={(e) => setRole(e.target.value)} className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3' type='text' placeholder='Role' id='role' value={role} />
-          <br />
+          {/* <input onChange={(e) => setRole(e.target.value)} className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3' type='text' placeholder='Role' id='role' value={role} />
+          <br /> */}
 
           <button className='bg-purple-950 w-[50%] text-slate-50 py-1 px-2 rounded-md mt-5' type='submit'>SignUp</button>
         </form>
