@@ -47,7 +47,7 @@ setQuestions(data.results)
           element={<Quiz name={name} setName={setName} score={score} setScore={setScore} questions={questions} setQuestions={setQuestions} />} ></Route>
           <Route path="/TestInterface" element={<TestInterFace name={name}
                 setName={setName}
-                fetchQuestions={fetchQuestions} ></TestInterFace> 
+                fetchQuestions={fetchQuestions}></TestInterFace> 
        } ></Route>
 
         </Routes>
