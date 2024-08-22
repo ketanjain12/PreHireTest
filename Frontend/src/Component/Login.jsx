@@ -24,7 +24,7 @@ const Login = () => {
         console.log('Login successful');
         navigate('/TestInterface'); // Navigate to the correct route after login
       } else {
-        console.error('Login failed:', resultData.msg);   //master branch co <-- c1 <-- c2 
+        console.error('Login failed:', resultData.msg);   
       }
     } catch (error) {
       console.error('Error:', error.message);

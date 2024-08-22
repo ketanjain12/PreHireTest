@@ -1,6 +1,4 @@
-
-import React, { useEffect, useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { Data } from "../assets/Data";
 
 const Test = () => {
@@ -10,28 +8,6 @@ const Test = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
- 
-  const [sec ,setSec] = useState(0);
-  const [min , setMin] = useState(0)
-
-  //for timer 
-
-  var timer;
-  useEffect(()=>{
-
-timer = setInterval(() => {
-  setSec(sec+1)
-  if(sec===59){
-    setMin(min+1)
-    setSec(0)
-  }
-}, 1000);
-
-return ()=> clearInterval(timer);
-
-  });
-
-
 
   const [sec, setSec] = useState(0); 
   const [min, setMin] = useState(0);  
@@ -70,19 +46,12 @@ return ()=> clearInterval(timer);
     if (!lock) {
       setSelectedOption(option);  
       setLock(true);
-
-      
-      if (option === question.correctAnswer) {
+      if (option === question.correctAnswer) { 
         setScore((prev) => prev + 1);
-      } else {
-        elem.target.classList.add("Wrong");
       }
-
-      setScore((prev) => prev + 1);
     } else {
       elem.target.classList.add("Wrong");
       setLock(true);
-
     }
   };
 
@@ -111,20 +80,16 @@ return ()=> clearInterval(timer);
 
   return (
     <>
-      <div className="bg-gradient-to-r shadow-2xl  from-indigo-300 h-[100vh] realative via-blue-400">
-        <div className="mx-auto absolute bg-white    top-[20%] w-[70%] h-[70%] m-auto flex flex-col gap-5 left-[20%]">
-
-        <div className="flex items-center justify-between p-2 ">
-        <h1 className="ml-16 text-xl font-bold mt-5">
-            Digi-Prima Pre Hire Test
-          </h1>
-          <h4 className="font-bold text-xl">Timer : {min<10?"0" +min:min}:{sec<10?"0"+sec:sec}</h4>
-          
-        </div>
-
-          <h1 className="ml-16 text-xl font-bold mt-5">
-            Digi-Prima Pre Hire Test
-          </h1>
+      <div className="bg-gradient-to-r shadow-2xl  from-indigo-300 h-[100vh] relative via-blue-400">
+        <div className="mx-auto absolute rounded-md bg-white top-[20%] w-[70%] h-[70%] m-auto flex flex-col gap-5 left-[20%]">
+          <div className="flex items-center justify-between p-2">
+            <h1 className="ml-16 text-xl font-bold mt-5">
+              Digi-Prima Pre Hire Test
+            </h1>
+            <h4 className="font-bold text-xl">
+              Timer: {min < 10 ? "0" + min : min}:{sec < 10 ? "0" + sec : sec}
+            </h4>
+          </div>
           <hr />
 
           {result ? (
@@ -134,7 +99,7 @@ return ()=> clearInterval(timer);
               </h2>
               <button
                 onClick={restTest}
-                className="px-3 w-52 text-center ml-[420px] py-1 bg-blue-500 text-white rounded-md mt-3"
+                className="px-3 w-52 text-center ml-[400px] py-1 bg-blue-500 text-white rounded-md mt-3"
               >
                 Reset
               </button>
@@ -173,13 +138,8 @@ return ()=> clearInterval(timer);
               >
                 Next
               </button>
-
-
-              <h3 className=" mr-56 text-center font-semibold ">
-
-              <h3 className="ml-16 font-semibold ">
- 
-                {index + 1} Of {Data.length}
+              <h3 className="text-center mr-56 font-semibold">
+                {index + 1} of {Data.length}
               </h3>
             </>
           )}
