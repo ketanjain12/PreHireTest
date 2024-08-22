@@ -2,6 +2,7 @@ const {Candidate} = require('../models/mdata');
 const {Test} = require('../models/mdata');
 const {TestResult} = require('../models/mdata');
 
+
 // exports.registerCandidate = async (req, res) => {
 //     try {
 //         const { name, email, testIds } = req.body;
@@ -47,38 +48,27 @@ const {TestResult} = require('../models/mdata');
 //     }
 // };
 
+
 exports.registerCandidate = async (req, res) => {
     try {
         const { name, email, testIds } = req.body;
-        console.log("name is", name, "email is", email, "testIds are", testIds);
+        console.log("name is ",name,"email is ",email,"testids is ",testIds);
 
-        // Check if the candidate already exists by email
+        //yaha check karennge kki candidate h kya nhi h emaial ke according 
         let candidate = await Candidate.findOne({ email });
-        console.log("candidate is", candidate);
+        console.log("candidate is ",candidate);
 
         if (candidate) { 
             return res.status(400).json({        
                 status: false,
-                msg: "Candidate already exists",
-                data: candidate
-            });
+                 msg: "Candidate already exists" ,
+                 data:candidate
+                });
         }
 
-        // Convert testIds from string to ObjectId
-        const objectIds = testIds.map(id => mongoose.Types.ObjectId(id));
-        
-        // Fetch test data using ObjectId array
-        const tests = await Test.find({ _id: { $in: objectIds } });
-        console.log("tests data is =", tests);
-
-        // If no tests are found, handle this scenario
-        if (!tests.length) {
-            return res.status(400).json({ 
-                status: false,
-                msg: "No tests found with the provided IDs"
-            });
-        }
-
+     // yaha per test data fetch karge
+        const tests = await Test.find({ _id: { $in: testIds } });
+    console.log("tests data is = ",tests)
         // Create new candidate and assign tests
         candidate = new Candidate({
             name,
@@ -95,16 +85,14 @@ exports.registerCandidate = async (req, res) => {
         res.status(201).json({ 
             status: true, 
             msg: "Candidate registered successfully",
-            data: candidate 
-        });
+             data: candidate });
     } catch (error) {
-        console.error("Server error:", error.message);
         res.status(500).json({ 
             status: false, 
-            msg: "Server error: " + error.message 
-        });
+            msg: "Server error: " + error.message });
     }
 };
+
 const mongoose = require('mongoose');
 
 // exports.trackProgress = async (req, res) => {
@@ -145,7 +133,7 @@ exports.trackProgress = async (req, res) => {
         const candidateId = req.params.candidateId.trim();
 
         // Validate candidateId
-
+        
         if (!mongoose.Types.ObjectId.isValid(candidateId)) {
 
             console.error(`Invalid candidateId: ${candidateId}`);

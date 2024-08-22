@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+  
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,20 +11,20 @@ const Login = () => {
 
     try {
       const result = await fetch('http://localhost:3002/api/v1/login', {
-        method: 'POST',
+        method: 'POST',     
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password }), 
       });
 
-      const resultData = await result.json();
+      const resultData = await result.json();    
 
       if (result.ok) {
         console.log('Login successful');
         navigate('/TestInterface'); // Navigate to the correct route after login
       } else {
-        console.error('Login failed:', resultData.msg);
+        console.error('Login failed:', resultData.msg);   //master branch co <-- c1 <-- c2 
       }
     } catch (error) {
       console.error('Error:', error.message);
@@ -39,7 +39,7 @@ const Login = () => {
           to="/login" 
         >
           Login 
-        </Link>
+        </Link> 
 
         <Link
           className='hover:bg-gradient-to-r from-indigo-500 via-purple-500 hover:text-white to-pink-500 border-gray-400 rounded-lg text-black bg-white py-2 px-6'
@@ -84,3 +84,5 @@ const Login = () => {
 };
 
 export default Login;
+
+//git status

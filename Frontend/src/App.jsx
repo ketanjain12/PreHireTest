@@ -31,7 +31,11 @@ setQuestions(data.results)
 
   return (
     <>
+
+       <BrowserRouter>
+
       <BrowserRouter>
+
         <NavBar></NavBar>
         <Routes>
            <Route path="/" element={<Home/>} />
@@ -43,6 +47,7 @@ setQuestions(data.results)
 
       <Test></Test>
         
+ 5c68eb88258854fecf794578c0450bb1e2cd8f2a
     </>
   );
 };
