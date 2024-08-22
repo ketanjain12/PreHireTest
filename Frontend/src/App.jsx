@@ -37,9 +37,11 @@ setQuestions(data.results)
            <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/signUp" element={<SignUp/>} /> 
-         <Route path="/test" element={<Test></Test>}></Route>
+         {/* <Route path="/test" element={<Test></Test>}></Route> */}
         </Routes>
       </BrowserRouter>  
+
+      <Test></Test>
         
     </>
   );

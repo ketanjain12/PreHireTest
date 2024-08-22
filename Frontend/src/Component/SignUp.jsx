@@ -8,7 +8,7 @@ const [password,setPassword] = useState("")
 const [confirmpassword , setConfirmPassword] = useState("")
 const handleSignup = async (event)=>{
    event.preventDefault();
-console.log(email , password , confirmpassword)
+  console.log(email , password , confirmpassword)    
 
 try{
 
