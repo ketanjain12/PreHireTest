@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, useNavigate,  } from 'react-router-dom'
 
 const SignUp = () => {
 
 const [email , setEmail] = useState("")
 const [password,setPassword] = useState("")
 const [confirmpassword , setConfirmPassword] = useState("")
+
+const Navigate = useNavigate();
+
 const handleSignup = async (event)=>{
    event.preventDefault();
   console.log(email , password , confirmpassword)    
@@ -25,7 +28,7 @@ try{
 
   if(result.ok){
 
-    Navigate('/login')
+   Navigate('/login');
 
   }
 
@@ -58,7 +61,7 @@ return (
 <form onSubmit={handleSignup}
 className='flex flex-col justify-center items-center m-1 p-1 mt-10'>
 
-<input onChange={(e)=> setEmail(e.target.value) }  className='border border-gray-300 w-[50%] rounded-xl capitalize px-3 py-3 '
+<input onChange={(e)=> setEmail(e.target.value) }  className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3 '
 type='email'
 placeholder='Email'
 id='email'
@@ -66,7 +69,7 @@ value={email}
 />
 <br/>
         
-<input onChange={(e)=> setPassword(e.target.value)} className='border border-gray-300 w-[50%] rounded-xl capitalize px-3 py-3 '
+<input onChange={(e)=> setPassword(e.target.value)} className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3 '
         
           type='password'
           placeholder='password'
@@ -77,7 +80,7 @@ value={email}
 
 <br />
        
-<input onChange={(e)=> setConfirmPassword(e.target.value)} className='border border-gray-300 w-[50%] rounded-xl capitalize px-3 py-3 '
+<input onChange={(e)=> setConfirmPassword(e.target.value)} className='border border-gray-300 w-[50%] rounded-xl  px-3 py-3 '
           type='password'
           placeholder='confirm Password'
           id='confirm Password'
@@ -88,7 +91,7 @@ value={email}
        
         
 <button
-className='bg-purple-950 w-[50%] text-slate-50 py-1 px-2 rounded-md mt-5'
+className='bg-purple-950 text-slate-50  hover:text-yellow-400 py-1 px-2 rounded-md mt-5  w-[50%]'
 type='submit'
 >
 SignUp

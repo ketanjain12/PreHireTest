@@ -9,22 +9,23 @@ const Test = () => {
   const [score, setScore] = useState(0);
   const [result, setResult] = useState(false);
 
-  const [sec, setSec] = useState(0);
-  const [min, setMin] = useState(0);
+  const [sec, setSec] = useState(0); 
+  const [min, setMin] = useState(0);  
 
-  const labels = ["A", "B", "C", "D"];
+  const labels = ["A", "B", "C", "D"]; 
 
   // Timer handling
   useEffect(() => {
     let timer;
 
+   
     if (!result && min < 30) {
       
       timer = setInterval(() => {
         setSec((prevSec) => {
           if (prevSec === 59) {
             setMin((prevMin) => prevMin + 1);
-            return 0;
+            return 0;  
           }
           return prevSec + 1;
         });
@@ -32,19 +33,20 @@ const Test = () => {
     }
 
     // Auto-submit the test after 30 minutes
-    if (min >= 30) {
-      setResult(true);
+    if (min >= 30) {    
+      setResult(true);   
       clearInterval(timer);
-    }
+    }   
 
-    return () => clearInterval(timer);
+  return () => clearInterval(timer); 
   }, [sec, min, result]);
 
-  const checkAnswer = (elem, option) => {
+
+  const checkAnswer = (elem, option) => {         
     if (!lock) {
-      setSelectedOption(option);
+      setSelectedOption(option);  
       setLock(true);
-      if (option === question.correctAnswer) {
+      if (option === question.correctAnswer) { 
         setScore((prev) => prev + 1);
       }
     } else {
@@ -78,10 +80,10 @@ const Test = () => {
 
   return (
     <>
-      <div className="bg-gradient-to-r shadow-2xl  from-indigo-300 h-[100vh] relative via-blue-400">
-        <div className="mx-auto absolute rounded-md bg-white top-[20%] w-[70%] h-[70%] m-auto flex flex-col gap-5 left-[20%]">
+      <div className="shadow-2xl file: bg-gradient-to-r from-indigo-300 via-blue-400 h-[100vh] relative">
+        <div className="mx-auto absolute rounded-md bg-white top-[15%] w-[70%] h-[70%] m-auto flex flex-col gap-5 left-[20%]">
           <div className="flex items-center justify-between p-2">
-            <h1 className="ml-16 text-xl font-bold mt-5">
+            <h1 className="ml-16 text-xl font-bold mt-5"> 
               Digi-Prima Pre Hire Test
             </h1>
             <h4 className="font-bold text-xl">
@@ -97,7 +99,7 @@ const Test = () => {
               </h2>
               <button
                 onClick={restTest}
-                className="px-3 w-52 text-center ml-[400px] py-1 bg-blue-500 text-white rounded-md mt-3"
+                className="px-3 w-52 text-center ml-[420px] py-1 bg-blue-500 text-white rounded-md mt-3"
               >
                 Reset
               </button>
@@ -116,7 +118,7 @@ const Test = () => {
                   <li
                     onClick={(e) => checkAnswer(e, option)}
                     key={i}
-                    className={`border-2 cursor-pointer hover:bg-slate-300  border-black rounded-md w-[70%] p-2 mb-2 ${
+                    className={`border-2 cursor-pointer   border-black rounded-md w-[70%] p-2 mb-2 ${
                       lock
                         ? option === question.correctAnswer
                           ? "bg-green-500"
