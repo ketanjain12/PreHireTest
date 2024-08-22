@@ -168,6 +168,18 @@ const Test = () => {
     }
   };
 
+  // logic for reset test
+
+  const restTest = ()=>{
+setIndex(0)
+setQuestion(Data[0])
+setScore(0)
+setLock(false)
+setResult(false)
+
+
+  }
+
   return (
     <>
       <div className="bg-gradient-to-r shadow-2xl  from-indigo-300 h-[100vh] relative via-blue-400">
@@ -187,12 +199,12 @@ const Test = () => {
               <h2 className="text-center capitalize text-xl font-bold mt-10">
                 You scored {score} out of {Data.length}
               </h2>
-              <button className="px-3 w-52 text-center ml-[400px] py-1 bg-blue-500 text-white rounded-md mt-3">
+              <button onClick={restTest} className="px-3 w-52 text-center ml-[400px] py-1 bg-blue-500 text-white rounded-md mt-3">
                 Reset
               </button>
               <p className="ml-10 capitalize mt-10 text-xl font-semibold text-blue-500">
                 Thank you for participating in the Digi-Prima pre-hire test. Best wishes for your bright future...
-              </p>
+              </p> 
             </>
           ) : (
             <>
