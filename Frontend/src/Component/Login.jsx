@@ -4,18 +4,20 @@ import { Link, useNavigate } from 'react-router-dom';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+ 
+
+  const navigate = useNavigate(); 
 
   const handleLogin = async (event) => {
-    event.preventDefault();
+   event.preventDefault();
 
     try {
       const result = await fetch('http://localhost:3002/api/v1/login', {
         method: 'POST',     
-        headers: {
-          'Content-Type': 'application/json',
+        headers: { 
+          'Content-Type': 'application/json', 
         },
-        body: JSON.stringify({ email, password }), 
+        body: JSON.stringify({ email, password }),  
       });
 
       const resultData = await result.json();    
@@ -24,16 +26,18 @@ const Login = () => {
         console.log('Login successful');
         navigate('/TestInterface'); // Navigate to the correct route after login
       } else {
-        console.error('Login failed:', resultData.msg);   
+        console.error('Login failed:', resultData.msg); 
+       
       }
     } catch (error) {
       console.error('Error:', error.message);
+      
     }
   };
 
   return (
     <>
-      <div className='flex items-center justify-center mt-10  py-1'>
+      <div className='flex  items-center justify-center mt-10  shadow-gray-900 py-1'> 
         <Link
           className="border-gray-400 rounded-lg text-black bg-white py-2 px-7 hover:bg-gradient-to-r from-indigo-500 via-purple-500 hover:text-white to-pink-500"
           to="/login" 

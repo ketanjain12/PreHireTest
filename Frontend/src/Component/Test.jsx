@@ -81,7 +81,7 @@ const Test = () => {
   return (
     <>
       <div className="bg-gradient-to-r shadow-2xl  from-indigo-300 h-[100vh] relative via-blue-400">
-        <div className="mx-auto absolute rounded-md bg-white top-[20%] w-[70%] h-[70%] m-auto flex flex-col gap-5 left-[20%]">
+        <div className="mx-auto  shadow-lg shadow-gray-900 absolute rounded-md bg-white top-[20%] w-[70%] h-[70%] m-auto flex flex-col gap-5 left-[20%]">
           <div className="flex items-center justify-between p-2">
             <h1 className="ml-16 text-xl font-bold mt-5">
               Digi-Prima Pre Hire Test
