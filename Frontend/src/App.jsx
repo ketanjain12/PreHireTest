@@ -6,6 +6,7 @@ import SignUp from "./Component/SignUp";
 import Login from "./Component/Login";
 import axios from "axios";
 import Test from "./Component/Test";
+import TestInterFace from "./Component/TestInterFace";
 
 
 const App = () => {
@@ -38,8 +39,9 @@ setQuestions(data.results)
         <Routes>
            <Route path="/" element={<Home/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="/signUp" element={<SignUp/>} /> 
+          <Route path="/signUp" element={<SignUp/>}/> 
           <Route path="/test" element={<Test></Test>}></Route> 
+          <Route path="/TestInterface" element={<TestInterFace/>}></Route>
         </Routes>
       </BrowserRouter>  
 
