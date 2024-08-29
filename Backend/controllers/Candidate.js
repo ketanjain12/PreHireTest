@@ -127,7 +127,7 @@ const mongoose = require('mongoose');
 //         res.status(500).json({ status: false, msg: "Server error: " + error.message });
 //     }
 // };
-
+// this api show only one result update aug22
 exports.trackProgress = async (req, res) => {
     try {
         const candidateId = req.params.candidateId.trim();
@@ -188,4 +188,63 @@ exports.trackProgress = async (req, res) => {
     }
 };
 
+// bydefault update 22 aug
+exports.trackProgress1 = async (req, res) => {
+    try {
+        const candidateId = req.params.candidateId.trim();
 
+        // Validate candidateId
+        
+        if (!mongoose.Types.ObjectId.isValid(candidateId)) {
+
+            console.error(`Invalid candidateId: ${candidateId}`);
+
+            return res.status(400).json({
+                 status: false,
+                  msg: "Invalid candidateId"
+                 });
+        }
+
+        // Fetch candidate data with test information
+        console.log(`Fetching candidate with ID: ${candidateId}`);
+
+        const candidate = await Candidate.findOne({candidateId:candidateId}).populate('testsTaken.testId');
+        console.log('Candidate query result:', candidate);
+
+        if (!candidate) {
+            console.error(`Candidate with ID ${candidateId} not found`);
+
+            return res.status(404).json({ 
+                status: false, 
+                msg: "Candidate not found" 
+            });
+        }
+
+        // Fetch progress details
+        const progress = await Promise.all(candidate.testsTaken.map(async (test) => {
+            const result = await TestResult.findOne({ testId: test.testId, candidateId: candidate._id });
+            return {
+                test: test.testId.title,
+                score: result ? result.score : null,
+                completed: !!result,
+                feedback: result ? result.feedback : null
+            };
+        }));
+
+        console.log("progress is", progress);
+
+        res.status(200).json({ 
+            status: true,
+             msg: "Successfully retrieved candidate progress", 
+             data: progress 
+            });
+            } catch (error) {
+
+        console.error(`Error fetching candidate progress: ${error.message}`);
+
+        res.status(500).json({
+             status: false, 
+             msg: "Server error: " + error.message
+             });
+    }
+};
